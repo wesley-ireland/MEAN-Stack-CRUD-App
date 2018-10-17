@@ -1,0 +1,7 @@
+<div ng-init="init()">
+    <div class="feedCard" ng-repeat="user in users">
+        <img src="{{user.picture.thumbnail}}"/>
+        <div class="feedCardName">{{user.name.first + ' ' + user.name.last}}</div>
+        <div class="feedCardContent">{{user}}</div>
+    </div>
+</div>

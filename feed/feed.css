@@ -1,0 +1,39 @@
+.feedCard {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    grid-template-rows: 48px 1fr;
+    grid-template-areas: 
+    "thumbnail fullname"
+    "content content";
+    width: calc(100% - 40px) ;
+    min-height:40px;
+    margin:10px;
+    padding:10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.feedCard>img{
+    grid-area: thumbnail;
+    /* Thumbnail images are 48px */
+    border-radius:24px;
+}
+
+.feedCardName{
+    grid-area: fullname;
+    font-size: 20px;
+    padding:10px;
+    padding-left:15px;
+}
+
+.feedCardContent {
+    grid-area: content;
+    word-wrap: break-word;
+
+}
+
+@media only screen and (min-width: 768px) {
+    .card {
+        display: block;
+        width:728px;
+    }
+}

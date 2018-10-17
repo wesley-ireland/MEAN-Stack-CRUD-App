@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>FactCheck</title>
+    <!-- Get Angular -->
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- Initialize Angular App -->
+    <script type="text/javascript" src="app.js"></script> 
+    <!-- Include page specific scripts -->
+    <script type="text/javascript" src="feed/feed.controller.js"></script>
+    <script type="text/javascript" src="feed/feed.js"></script>
+    <!-- Import Montserrat font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <!-- Apply main application container styles -->
+    <link rel="stylesheet" type="text/css" href="container.css"/>
+    <!-- Apply page specific styles -->
+    <link rel="stylesheet" type="text/css" href="feed/feed.css"/>
+</head>
+<body ng-app="factCheck">
+    <div id="container">
+        <div id="header"></div>
+        <div id="content">
+            <ui-view> 
+                <i>Loading...</i>
+            </ui-view>
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "factcheck",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "angular": "1.7.5",
+    "angular-ui-router": "^1.0.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "http-server -o"
+  },
+  "author": "Wesley Ireland",
+  "license": "ISC",
+  "repository": "",
+  "description": "FactCheck is a content hosting platform that empowers its users to find sourcable facts"
+}
