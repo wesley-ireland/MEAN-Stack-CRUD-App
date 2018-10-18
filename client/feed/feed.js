@@ -1,13 +1,11 @@
-// Define the app states
-angular.module('factCheck').config(function($urlRouterProvider, $stateProvider) {
-
-    $urlRouterProvider.otherwise('/');
+// Define the page states
+angular.module('factCheck').config(function($stateProvider) {
 
     $stateProvider
         .state('feed', {
             name: 'feed',
             url: '/feed',
-            templateUrl: 'feed/feed.html',
+            templateUrl: 'client/feed/feed.html',
             controller: 'feedController'
         });
         
