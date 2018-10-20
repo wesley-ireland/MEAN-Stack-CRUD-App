@@ -41,7 +41,7 @@ angular.module('factCheck').controller('animalsDetailController', function ($sco
     $scope.updateAnimalBtnClick = async function() {
         try {
             await animalService.updateAnimal($scope.input);
-            $state.go('animals-list');
+            $state.go('/');
         }
         catch(err) {
             console.error(err);
@@ -51,7 +51,7 @@ angular.module('factCheck').controller('animalsDetailController', function ($sco
     $scope.deleteAnimalBtnClick = async function(id) {
         try {
             await animalService.deleteAnimal(id);
-            $state.go('animals-list');
+            $state.go('/');
         }
         catch(err) {
             console.error(err);
@@ -59,6 +59,6 @@ angular.module('factCheck').controller('animalsDetailController', function ($sco
     }
 
     $scope.cancelBtnClick = function(id) {
-        $state.go('animals-list');
+        $state.go('/');
     }
 });

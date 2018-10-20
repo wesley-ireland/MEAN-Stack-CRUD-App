@@ -16,30 +16,34 @@
     const animalController = {
 
         // Get a list of animals
-        getAnimals: (req, res) => {
+        getAnimals: (req, res, next) => {
             let result = animals;
             const sortBy = req.query.sortBy;
             if (sortBy && animalValidationSchemas.SORTABLE_FIELDS.indexOf(req.query.sortBy) != -1) {
                 result = _.sortBy(animals, [function(o) { return o[sortBy]; }]);
             }
             res.status(httpStatus.OK).send(result);
+            next();
         },
 
         // Get a specific animal by id
-        getAnimal: (req, res) => {
+        getAnimal: (req, res, next) => {
             // Find the animal with matching id
             const result = animals.find(a => a.id === parseInt(req.params.id));
             // If not return 404, otherwise return animal
-            if (!result) return res.send(httpStatus.NOT_FOUND, `Animal with id ${req.params.id} was not found.`);
-            return res.status(httpStatus.OK).send(result);
+            if (!result) res.send(httpStatus.NOT_FOUND, `Animal with id ${req.params.id} was not found.`);
+            res.status(httpStatus.OK).send(result);
+            next();
         },
 
         // Create an animal
-        createAnimal: (req, res) => {
+        createAnimal: (req, res, next) => {
             // Validate the request body
             const result = Joi.validate(req.body, animalValidationSchemas.CREATE, { abortEarly: false });
-            if (result.error)  
-                return res.status(httpStatus.BAD_REQUEST).send(result.error.details[0].message);
+            if (result.error) {
+                res.status(httpStatus.BAD_REQUEST).send(result.error.details[0].message);
+                next();
+            }
             // Create new Animal, persist to local array
             const animal = {
                 id: animals.length + 1,
@@ -48,39 +52,48 @@
             }
             animals.push(animal);
             // Return the newly created animal
-            return res.status(httpStatus.CREATED).send(animal);
+            res.status(httpStatus.CREATED).send(animal);
+            next();
         },
 
         // Delete an animal
-        deleteAnimal: (req, res) => {
+        deleteAnimal: (req, res, next) => {
                 // Find the animal
                 const id = parseInt(req.params.id)
                 const result = animals.find(a => a.id === id);
                 // If not found, return 404
-                if (!result) 
-                    return res.send(httpStatus.NOT_FOUND, `Animal with id ${req.params.id} was not found`);
+                if (!result) { 
+                    res.send(httpStatus.NOT_FOUND, `Animal with id ${req.params.id} was not found`);
+                    next();
+                }
                 // Otherwise remove & return 204 No Content
                 _.remove(animals, (o) => o.id === id);
-                return res.status(httpStatus.NO_CONTENT).send();
+                res.status(httpStatus.NO_CONTENT).send();
+                next();
         },
 
         // Update an animal
-        updateAnimal: (req, res) => {
+        updateAnimal: (req, res, next) => {
             // Validate the request body 
             const result = Joi.validate(req.body, animalValidationSchemas.UPDATE, {abortEarly: false});
             if (result.error) {
                 var errors = _.map(result.error.details, 'message').join("\r\n");
-                return res.status(httpStatus.BAD_REQUEST).send(errors);
+                res.status(httpStatus.BAD_REQUEST).send(errors);
+                next();
             }
             // Find the animal
             let animal = animals.find(a => a.id === parseInt(req.params.id));
             //If not found, return 404
-            if (!animal) 
-                return res.status(httpStatus.NOT_FOUND).send(`Animal with id ${req.params.id} was not found`);
+            if (!animal) {
+                res.status(httpStatus.NOT_FOUND).send(`Animal with id ${req.params.id} was not found`);
+                next();
+            }
             // Update the animal
-            animal = req.body;
+            let updatedAnimal = req.body;
+            animals = animals.map(a => a.id === updatedAnimal.id ? updatedAnimal : a);
             // Return updated animal
-            return res.status(httpStatus.CREATED).send(animal);
+            res.status(httpStatus.OK).send(updatedAnimal);
+            next();
         }
     };
 
