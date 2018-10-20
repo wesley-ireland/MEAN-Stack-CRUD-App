@@ -8,6 +8,10 @@ body {
     background-color: rgb(224, 224, 224);
 }
 
+::placeholder {
+    color: rgb(223, 223, 223) !important;
+}
+
 #container {
     display:grid;
     grid-template-areas:
@@ -28,12 +32,39 @@ body {
 #content {
     grid-area: content;
     background-color: rgb(240, 240, 240);
+    padding:25px;
 }
 
 #footer {
     grid-area: footer;
     background-color: rgb(60, 65, 77);
 }
+
+#loadingPanel {
+    height: 200px;
+    display: grid;
+    grid-template-areas:
+    ". . ."
+    ". loading ."
+    ". . .";
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto 1fr;
+}
+
+#loadingMessage {
+    grid-area: loading;
+    align-self: center;
+    justify-self: center;
+}
+
+#loadingPanel i {
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 @media only screen and (min-width: 768px) {
     #container {

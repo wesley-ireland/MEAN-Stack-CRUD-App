@@ -1,0 +1,27 @@
+<div id="animalsListContainer" ng-init="init()">
+    <h1>Animals</h1>
+    <div id="createAnimalButtonContainer">
+        <button class="btn btn-default" ng-click="createAnimalBtnClick()">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Species</th>
+            <th>Sound</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="animal in animals">
+            <td>{{animal.species}}</td>
+            <td>{{animal.sound}}</td>
+            <td class="text-right">
+                <button class="btn btn-default" ng-click="editAnimalBtnClick(animal.id)">
+                    <i class="fas fa-pencil-alt"></i>                
+                </button>
+                <button class="btn btn-default" ng-click="deleteAnimalBtnClick(animal.id)">
+                    <i class="fas fa-trash-alt"></i>                
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

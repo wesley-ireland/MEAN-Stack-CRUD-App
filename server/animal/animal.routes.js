@@ -14,7 +14,7 @@
         // Delete an animal
         app.delete('/api/animals/:id', animalController.deleteAnimal);
         // Update an animal
-        app.put('/api/animals', animalController.updateAnimal);
+        app.put('/api/animals/:id', animalController.updateAnimal);
     };
     module.exports = animalRoutes;
 

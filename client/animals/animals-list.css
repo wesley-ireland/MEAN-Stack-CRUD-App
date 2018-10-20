@@ -1,0 +1,45 @@
+#animalsListContainer {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    grid-template-areas: 
+    "header createAnimalButton"
+    "table table";
+}
+
+#animalsListContainer h1 {
+    grid-area: header;
+    margin:0;
+}
+
+#createAnimalButtonContainer {
+    grid-area: createAnimalButton;
+    align-self: center;
+    justify-self: end;
+}
+
+#animalsListContainer table {
+    grid-area: table;
+    margin-top: 8px;
+}
+
+.homeTableRow {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: 
+    "species sound delete";
+}
+
+.species {
+    grid-area: species;
+}
+
+.sound {
+    grid-area: sound;
+}
+
+.deleteBtn {
+    grid-area: delete;
+    justify-self: end;
+}

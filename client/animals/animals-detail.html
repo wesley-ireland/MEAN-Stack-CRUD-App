@@ -1,0 +1,22 @@
+<div id="animalsDetailContainer" ng-init="init()">
+    <h1>{{title}}</h1>
+    <div ng-if="editMode" id="deleteAnimalButtonContainer">
+        <button class="btn btn-default" ng-click="deleteAnimalBtnClick(animal.id)">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </div>
+    <hr>
+    <form>
+        <div class="form-group">
+            <label for="speciesInput">Species</label>
+            <input ng-model="input.species" type="text" class="form-control" id="speciesInput" name="species" placeholder="Lion">
+        </div>
+        <div class="form-group">
+            <label for="speciesInput">Sound</label>
+            <input ng-model="input.sound" type="text" class="form-control" id="soundInput" name="sound" placeholder="Roar">
+        </div>
+        <button ng-if="!editMode" ng-disabled="disableSubmit()" ng-click="createAnimalBtnClick(input)" type="submit" class="btn btn-primary">Create</button>
+        <button ng-if="editMode" ng-disabled="disableSubmit()" ng-click="updateAnimalBtnClick(input)" type="submit" class="btn btn-primary">Update</button>
+        <a ng-click="cancelBtnClick()" id="cancelButton" href="#">Cancel</a>
+    </form>
+</div>

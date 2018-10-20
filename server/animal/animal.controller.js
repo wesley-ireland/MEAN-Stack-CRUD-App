@@ -22,7 +22,7 @@
             if (sortBy && animalValidationSchemas.SORTABLE_FIELDS.indexOf(req.query.sortBy) != -1) {
                 result = _.sortBy(animals, [function(o) { return o[sortBy]; }]);
             }
-            res.send(httpStatus.OK, result);
+            res.status(httpStatus.OK).send(result);
         },
 
         // Get a specific animal by id
@@ -31,7 +31,7 @@
             const result = animals.find(a => a.id === parseInt(req.params.id));
             // If not return 404, otherwise return animal
             if (!result) return res.send(httpStatus.NOT_FOUND, `Animal with id ${req.params.id} was not found.`);
-            res.send(httpStatus.OK, result);
+            return res.status(httpStatus.OK).send(result);
         },
 
         // Create an animal
@@ -48,19 +48,20 @@
             }
             animals.push(animal);
             // Return the newly created animal
-            res.send(httpStatus.CREATED, animal);
+            return res.status(httpStatus.CREATED).send(animal);
         },
 
         // Delete an animal
         deleteAnimal: (req, res) => {
-            // Find the animal
-            const id = parseInt(req.params.id)
-            const result = animals.find(a => a.id === id);
-            // If not found, return 404
-            if (!result) return res.send(httpStatus.NOT_FOUND, `Animal with id ${req.params.id} was not found`);
-            // Otherwise remove & return 204 No Content
-            _.remove(animals, (o) => o.id === id);
-            res.send(httpStatus.NO_CONTENT);
+                // Find the animal
+                const id = parseInt(req.params.id)
+                const result = animals.find(a => a.id === id);
+                // If not found, return 404
+                if (!result) 
+                    return res.send(httpStatus.NOT_FOUND, `Animal with id ${req.params.id} was not found`);
+                // Otherwise remove & return 204 No Content
+                _.remove(animals, (o) => o.id === id);
+                return res.status(httpStatus.NO_CONTENT).send();
         },
 
         // Update an animal
@@ -72,14 +73,14 @@
                 return res.status(httpStatus.BAD_REQUEST).send(errors);
             }
             // Find the animal
-            let animal = animals.find(a => a.id === parseInt(req.body.id));
+            let animal = animals.find(a => a.id === parseInt(req.params.id));
             //If not found, return 404
-            if (!animal) return res.send(httpStatus.NOT_FOUND, `Animal with id ${req.body.id} was not found`);
+            if (!animal) 
+                return res.status(httpStatus.NOT_FOUND).send(`Animal with id ${req.params.id} was not found`);
             // Update the animal
-            animal.species = req.body.species;
-            animal.sound = req.body.sound;
+            animal = req.body;
             // Return updated animal
-            res.send(httpStatus.CREATED, animal);
+            return res.status(httpStatus.CREATED).send(animal);
         }
     };
 

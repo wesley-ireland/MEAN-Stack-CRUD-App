@@ -1,0 +1,32 @@
+#animalsDetailContainer {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto;
+    grid-template-areas: 
+    "header deleteAnimalButton"
+    "hr hr"
+    "form form";
+}
+
+#animalsDetailContainer h1 {
+    grid-area: header;
+    margin:0;
+}
+
+#deleteAnimalButtonContainer {
+    grid-area: deleteAnimalButton;
+    align-self: center;
+    justify-self: end;
+}
+
+#animalsDetailContainer hr {
+    grid-area: hr;
+}
+
+#animalsDetailContainer form {
+    grid-area: form;
+}
+
+#cancelButton {
+    margin-left:15px;
+}

@@ -4,33 +4,46 @@
     <base href="/">
     <!-- Import Montserrat font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <!-- Import FontAwesome Icons font -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- Get Bootstrap Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <!-- Get Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Get Angular -->
     <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- Apply main application container styles -->
+    <link rel="stylesheet" type="text/css" href="container.css"/>
     <!-- Initialize Angular App -->
-    <script type="text/javascript" src="client/app.js"></script> 
-    <!-- Include page specific scripts -->
+    <script type="text/javascript" src="client/app.js"></script>
+    <!-- Define common services --> 
+    <script type="text/javascript" src="client/shared/services/animals.service.js"></script>
+    <!-- Include page specific scripts / styles -->
     <!-- 404 -->
     <script type="text/javascript" src="client/404/404.js"></script>
-    <!-- Home -->
-    <script type="text/javascript" src="client/home/home.controller.js"></script>
-    <script type="text/javascript" src="client/home/home.js"></script>
+    <link rel="stylesheet" type="text/css" href="client/404/404.css"/>
+    <!-- Animals -->
+    <script type="text/javascript" src="client/animals/animals-list.controller.js"></script>
+    <script type="text/javascript" src="client/animals/animals-detail.controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="client/animals/animals-list.css"/>
+    <link rel="stylesheet" type="text/css" href="client/animals/animals-detail.css"/>
+    <script type="text/javascript" src="client/animals/animals.js"></script>
     <!-- Feed -->
     <script type="text/javascript" src="client/feed/feed.controller.js"></script>
     <script type="text/javascript" src="client/feed/feed.js"></script>
-    <!-- Apply main application container styles -->
-    <link rel="stylesheet" type="text/css" href="container.css"/>
-    <!-- Apply page specific styles -->
-    <link rel="stylesheet" type="text/css" href="client/404/404.css"/>
-    <link rel="stylesheet" type="text/css" href="client/home/home.css"/>
     <link rel="stylesheet" type="text/css" href="client/feed/feed.css"/>
 </head>
 <body ng-app="factCheck">
     <div id="container">
         <div id="header"></div>
         <div id="content">
-            <ui-view> 
-                <i>Loading...</i>
+            <ui-view>
+                <div id="loadingPanel">
+                    <div id="loadingMessage">Loading... <i class="fas fa-spinner"></i></div>
+                </div> 
             </ui-view>
         </div>
         <div id="footer"></div>
