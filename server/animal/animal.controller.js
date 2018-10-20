@@ -11,16 +11,22 @@
     let animals = require('./seed.animals');
     // Get animal validation schemas
     const animalValidationSchemas = require('../shared-enums/validation-schemas').ANIMALS;
-
+    // Get Animals Service
+    const animalsService = require('./animals.service');
     // Define the animal HTTP request controller
     const animalController = {
 
         // Get a list of animals
-        getAnimals: (req, res, next) => {
-            let result = animals;
+        getAnimals: async (req, res, next) => {
+            try {
+                var result = await animalsService.getAnimals();
+            }
+            catch(err) {
+
+            }
             const sortBy = req.query.sortBy;
             if (sortBy && animalValidationSchemas.SORTABLE_FIELDS.indexOf(req.query.sortBy) != -1) {
-                result = _.sortBy(animals, [function(o) { return o[sortBy]; }]);
+                result = _.sortBy(results, [function(o) { return o[sortBy]; }]);
             }
             res.status(httpStatus.OK).send(result);
             next();

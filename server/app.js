@@ -31,7 +31,7 @@
     // Enable request logging middleware
     app.use((req, res, next) => {
         requestUuid = uuid();
-        console.log(`Incoming request:  ${req.method} ${req.url} - ${requestUuid} - ${moment()}`)
+        console.log(`Incoming request:  ${req.method} ${req.url} - ${moment()} - Request Id: ${requestUuid}`)
         next();
     }); 
     // Define the RESTful API endpoint routes
@@ -41,7 +41,7 @@
     // require('./404/404.routes')(app);
     // Enable response logging middleware
     app.use((req, res, next) => {
-        console.log(`Request fulfilled: ${req.method} ${req.url} - ${requestUuid} - ${moment()}`);
+        console.log(`Request fulfilled: ${req.method} ${req.url} - ${moment()} - Request Id: ${requestUuid}`);
         next();
     });
     // Start listening on the defined port for incoming requests
