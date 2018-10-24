@@ -12,7 +12,7 @@ body {
     color: rgb(223, 223, 223) !important;
 }
 
-#container {
+#container { 
     display:grid;
     grid-template-areas:
     "header header header"

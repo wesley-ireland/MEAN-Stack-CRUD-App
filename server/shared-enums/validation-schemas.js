@@ -11,7 +11,7 @@
                 sound: Joi.string().min(3).required()
             },
             UPDATE: {
-                id: Joi.number().required(),
+                _id: Joi.string().min(24).max(24).required(),
                 species: Joi.string().min(3).required(),
                 sound: Joi.string().min(3).required()
             },

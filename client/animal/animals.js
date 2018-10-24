@@ -5,25 +5,31 @@ angular.module('factCheck').config(function($stateProvider) {
         .state('/', {
             name: '/',
             url: '/',
-            templateUrl: 'client/animals/animals-list.html',
+            templateUrl: '/animal/animals-list.html',
             controller: 'animalsListController'
         })
-        .state('animals-list', {
+        .state('animals', {
             name: 'animals',
             url: '/animals',
-            templateUrl: 'client/animals/animals-list.html',
+            templateUrl: '/animal/animals-list.html',
             controller: 'animalsListController'
         })
+    //    .state('animals', {
+    //         name: 'animals',
+    //         url: '/animals',
+    //         templateUrl: '/animals/animals-list.html',
+    //         controller: 'animalsListController'
+    //     })
         .state('animals-create', {
             name: 'animals-create',
             url: '/animals/create',
-            templateUrl: 'client/animals/animals-detail.html',
+            templateUrl: '/animal/animals-detail.html',
             controller: 'animalsDetailController'
         })
         .state('animals-edit', {
             name: 'animals-edit',
             url: '/animals/edit/:id',
-            templateUrl: 'client/animals/animals-detail.html',
+            templateUrl: '/animal/animals-detail.html',
             controller: 'animalsDetailController'
         });
 });

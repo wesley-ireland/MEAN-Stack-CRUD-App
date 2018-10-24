@@ -42,7 +42,7 @@ angular.module('factCheck').service('animalService', function($http) {
 
     this.updateAnimal = async function(data) {
         try {
-            let result = await $http.put(`http://localhost:9000/api/animals/${data.id}`, data);
+            let result = await $http.put(`http://localhost:9000/api/animals/${data._id}`, data);
             return result.data;
         }
         catch(err) {

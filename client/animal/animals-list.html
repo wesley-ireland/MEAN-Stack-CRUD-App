@@ -15,10 +15,10 @@
             <td>{{animal.species}}</td>
             <td>{{animal.sound}}</td>
             <td class="text-right">
-                <button class="btn btn-default" ng-click="editAnimalBtnClick(animal.id)">
+                <button class="btn btn-default" ng-click="editAnimalBtnClick(animal._id)">
                     <i class="fas fa-pencil-alt"></i>                
                 </button>
-                <button class="btn btn-default" ng-click="deleteAnimalBtnClick(animal.id)">
+                <button class="btn btn-default" ng-click="deleteAnimalBtnClick(animal._id)">
                     <i class="fas fa-trash-alt"></i>                
                 </button>
             </td>

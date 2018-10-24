@@ -1,7 +1,7 @@
 <div id="animalsDetailContainer" ng-init="init()">
     <h1>{{title}}</h1>
     <div ng-if="editMode" id="deleteAnimalButtonContainer">
-        <button class="btn btn-default" ng-click="deleteAnimalBtnClick(animal.id)">
+        <button class="btn btn-default" ng-click="deleteAnimalBtnClick(animal._id)">
             <i class="fas fa-trash-alt"></i>
         </button>
     </div>
